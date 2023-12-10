@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Models\product;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class homeController extends Controller
 {
@@ -23,12 +25,14 @@ class homeController extends Controller
         $items->prod_images = $fileName;
         $items->status='pending';
         $items->reject_reason='null';
+        $items->user_id=Auth::user()->id;
         $items->save();
         return redirect('/dashboard')->with('success','Product Added');
     }
      
     public function viewProducts(){
-        $products = Product::all();
+        //$products = Product::all();
+        $products = Product::with(['userProducts'])->where('user_id',Auth::user()->id)->get();
         return view('home',compact('products'));
     }
     public function productDetails($id){
