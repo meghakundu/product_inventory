@@ -13,17 +13,10 @@ class LoginController extends Controller
     
     public function loginperform(loginRequest $request)
     {
-        $credentials = $request->getCredentials();
-
-        if(!Auth::validate($credentials)):
-            return redirect()->to('login');
-        endif;
-
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-        Auth::login($user);
-
-        return $this->authenticated($request, $user);
+        $this->validate($request, ['name' => 'required|string', 'password' => 'required']);
+        $user = $request->all();
+        Auth::attempt($user);
+        return redirect('/dashboard');
     }
 
     /**
