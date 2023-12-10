@@ -1,8 +1,4 @@
-<h3>Welcome @if(auth()->user()->name!='Admin')
-    {{auth()->user()->name}} 
-    @else 
-   Admin 
-   @endif
+<h3>Welcome {{auth()->user()->name}} 
 </h3>
 
 <h3>Add Product</h3>
@@ -14,7 +10,7 @@
  <input type="file" name="prod_images"/><br>
  <input type="submit" value="Add product"/>
 </form>
-
+@if($products->count()>0)
 <h3>Products Added</h3>
 <table>
     <tr>
@@ -40,3 +36,6 @@
     </tr>
     @endforeach
 </table>
+@else
+<p>No products added.</p>
+@endif
