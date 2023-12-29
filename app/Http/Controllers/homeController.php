@@ -32,7 +32,11 @@ class homeController extends Controller
      
     public function viewProducts(){
         //$products = Product::all();
+        if(Auth::user()->name!='Admin'){
         $products = Product::with(['userProducts'])->where('user_id',Auth::user()->id)->get();
+        } else{
+            $products = Product::all();
+        }
         return view('home',compact('products'));
     }
     public function productDetails($id){
