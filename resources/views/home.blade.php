@@ -32,7 +32,11 @@
         <span>No image found!</span>
         @endif
        </td>
+        @if(auth()->user()->name!='Admin')
        <td>{{$item->status}}</td>
+       @else
+       <td></td>
+       @endif
     </tr>
     @endforeach
 </table>
