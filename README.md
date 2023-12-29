@@ -1,4 +1,4 @@
-Products Inventory
+Products Inventory <br>
 Show as per user roles <br>
 -Add register and login form. <br>
 -Add product form <br>
