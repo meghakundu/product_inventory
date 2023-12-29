@@ -1,6 +1,6 @@
 Products Inventory
-Show as per user roles
--Add register and login form.
--Add product form
--change status update from pending(by default) to approved
+Show as per user roles <br>
+-Add register and login form. <br>
+-Add product form <br>
+-change status update from pending(by default) to approved <br>
 -for reject of product by admin reason to be submitted.
